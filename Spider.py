@@ -6,7 +6,7 @@
 # Brief : 用于自动检查新信息的爬虫
 ######################
 
-import time, requests, traceback, json, logging
+import time, logging
 
 from ZJU_GRS import *
 from ZJU_KSZX import *
@@ -78,6 +78,7 @@ while True:
                 except:
                     logging.critical('Send Wchat Recovery Report Error!!!!!')
 
+    logging.warning('************************')
     logging.warning('End of a loop~\n')
     time.sleep(900)
 
