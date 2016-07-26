@@ -11,6 +11,13 @@ from bs4 import BeautifulSoup
 
 
 class WebsiteBase:
+    # Name : 网站名称
+    # DBName ： 数据库名称，不要包含后缀
+    # AgentID ： 微信发布时需要用到的AgentID
+    # CheckContent ： 是否需要打开URL检查内容，True or False
+    # KeyWords : 过滤用关键词List，如果不需要设置为[]
+    # KeyWordsThreshold : 关键词阈值，内容页包含的关键词个数超过这个值才认为符合要求
+    # encoding ： 网站的编码格式，不设置的话默认为utf-8
     def __init__(self, Name, DBName, AgentID, CheckContent, KeyWords, KeyWordsThreshold, encoding = 'utf-8'):
         self.Name = Name
         self.DBName = DBName + '.db'
@@ -70,12 +77,12 @@ class WebsiteBase:
             try:
                 time.sleep(3)
                 response = self.GetMainPage(p)
+                response.encoding = self.encoding
             except Exception as err:
                 returnErr = err
                 logging.error('    ' + repr(err))
                 continue
 
-            response.encoding = self.encoding
             soup = BeautifulSoup(response.text, 'html5lib')
 
             soup = self.GetEnclose(soup)
@@ -125,6 +132,7 @@ class WebsiteBase:
                         try:
                             time.sleep(3)
                             response = requests.get(ContentURL, timeout=7)
+                            response.encoding = self.encoding
                         except Exception as err:
                             returnErr = err
                             logging.error('    ' + repr(err))
