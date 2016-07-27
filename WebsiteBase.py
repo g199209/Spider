@@ -186,6 +186,7 @@ class WebsiteBase:
 
     def Update(self):
         logging.warning('Updating : ' + self.Name + '......')
+        returnErr = None
 
         # Init Wchat
         access_token = self.InitWchat()
@@ -216,22 +217,27 @@ class WebsiteBase:
                 time.sleep(1)
                 r = requests.post('https://qyapi.weixin.qq.com/cgi-bin/message/send', params=access_token,
                                   data=json.dumps(newsdata, ensure_ascii=False).encode('utf-8'), timeout=7)
-            except:
-                logging.error('Publish Timeout!')
-
-            if 'errcode' in r.json() and r.json()['errcode'] == 0:
-                logging.warning('    Publish Success!')
-                cursor.execute("update Articles set Published = 1 where Title = ? and URL = ? and DATE = ?",
-                               (record[0], record[2], record[3]))
+            except Exception as err:
+                logging.error('    Publish Error!')
+                logging.error('    ' + repr(err))
+                returnErr = err
             else:
-                logging.error('Publish Error!')
-                logging.error(json.dumps(newsdata, ensure_ascii=False))
-                logging.error(r.json())
+                if 'errcode' in r.json() and r.json()['errcode'] == 0:
+                    logging.warning('    Publish Success!')
+                    cursor.execute("update Articles set Published = 1 where Title = ? and URL = ? and DATE = ?",
+                                   (record[0], record[2], record[3]))
+                else:
+                    logging.error('    Publish Error!')
+                    logging.error('    ' + json.dumps(newsdata, ensure_ascii=False))
+                    logging.error('    ' + r.json())
 
         # Close DB
         cursor.close()
         conn.commit()
         conn.close()
+
+        if returnErr:
+            raise returnErr
 
     def ReportErrStatus(self, errstr):
         access_token = self.InitWchat()
@@ -259,7 +265,7 @@ class WebsiteBase:
             r = requests.post('https://qyapi.weixin.qq.com/cgi-bin/message/send', params=access_token,
                               data=json.dumps(newsdata, ensure_ascii=False).encode('utf-8'), timeout=7)
         except:
-            logging.error('Send Wchat Report Timeout!')
+            logging.error('Send Wchat Report Error!')
 
     def InitWchat(self):
         # Init Wchat
@@ -267,15 +273,16 @@ class WebsiteBase:
                 'corpsecret': self.corpsecret}
         try:
             r = requests.get('https://qyapi.weixin.qq.com/cgi-bin/gettoken', params=Auth, timeout=7)
-        except:
+        except Exception as err:
             logging.error('Wchat Init Timeout!!')
+            logging.error(repr(err))
             return None
-
-        if 'access_token' in r.json():
-            return {'access_token': r.json()['access_token']}
         else:
-            logging.error('Wchat Init Error!!')
-            return None
+            if 'access_token' in r.json():
+                return {'access_token': r.json()['access_token']}
+            else:
+                logging.error('Wchat Init Error!!')
+                return None
 
     def GetPageRange(self):
         pass
