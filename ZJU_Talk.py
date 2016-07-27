@@ -22,7 +22,7 @@ class ZJU_Talk(WebsiteBase.WebsiteBase):
                     'zphlx': 0,
                     'pages.pageSize': 30
                     }
-        r = requests.post('http://www.career.zju.edu.cn/ejob/zczphxxmorelogin.do', data=Formdata, timeout=10)
+        r = requests.post('http://www.career.zju.edu.cn/ejob/zczphxxmorelogin.do', data=Formdata, timeout=21)
         r.encoding = 'gb2312'
         soup = BeautifulSoup(r.text, 'html5lib')
         NofPages = int(soup.find('span', title='总页数').contents[0].string)

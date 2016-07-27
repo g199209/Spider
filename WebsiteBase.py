@@ -27,15 +27,14 @@ class WebsiteBase:
         self.KeyWords = KeyWords
         self.encoding = encoding
         self.KeyWordsThreshold = KeyWordsThreshold
+        # Error Status
+        self.err = 0
 
         # Wchat ID & Password
         f = open('wchat')
         self.corpid = f.readline().strip()
         self.corpsecret = f.readline().strip()
         f.close()
-
-        # Error Status
-        self.err = False
 
         # Init DB
         conn = sqlite3.connect(self.DBName)
@@ -131,7 +130,7 @@ class WebsiteBase:
                     if flagcount == 0 and ContentURL != '':
                         try:
                             time.sleep(3)
-                            response = requests.get(ContentURL, timeout=7)
+                            response = requests.get(ContentURL, timeout=21)
                             response.encoding = self.encoding
                         except Exception as err:
                             returnErr = err
@@ -216,7 +215,7 @@ class WebsiteBase:
             try:
                 time.sleep(1)
                 r = requests.post('https://qyapi.weixin.qq.com/cgi-bin/message/send', params=access_token,
-                                  data=json.dumps(newsdata, ensure_ascii=False).encode('utf-8'), timeout=7)
+                                  data=json.dumps(newsdata, ensure_ascii=False).encode('utf-8'), timeout=21)
             except Exception as err:
                 logging.error('    Publish Error!')
                 logging.error('    ' + repr(err))
@@ -263,7 +262,7 @@ class WebsiteBase:
 
         try:
             r = requests.post('https://qyapi.weixin.qq.com/cgi-bin/message/send', params=access_token,
-                              data=json.dumps(newsdata, ensure_ascii=False).encode('utf-8'), timeout=7)
+                              data=json.dumps(newsdata, ensure_ascii=False).encode('utf-8'), timeout=21)
         except:
             logging.error('Send Wchat Report Error!')
 
@@ -272,7 +271,7 @@ class WebsiteBase:
         Auth = {'corpid': self.corpid,
                 'corpsecret': self.corpsecret}
         try:
-            r = requests.get('https://qyapi.weixin.qq.com/cgi-bin/gettoken', params=Auth, timeout=7)
+            r = requests.get('https://qyapi.weixin.qq.com/cgi-bin/gettoken', params=Auth, timeout=21)
         except Exception as err:
             logging.error('Wchat Init Timeout!!')
             logging.error(repr(err))

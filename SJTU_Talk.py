@@ -23,7 +23,7 @@ class SJTU_Talk(WebsiteBase.WebsiteBase):
     def GetMainPage(self, page):
         Formdata = {'xjhType': page}
         return requests.post('http://www.job.sjtu.edu.cn/eweb/jygl/zpfw.so?modcode=jygl_xjhxxck&subsyscode=zpfw&type=searchXjhxx',
-                             data=Formdata, timeout=7)
+                             data=Formdata, timeout=21)
 
     # Return soup
     def GetEnclose(self, soup):

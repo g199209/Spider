@@ -21,7 +21,7 @@ class Template(WebsiteBase.WebsiteBase):
 
     # Use requests to get the main page, return response
     def GetMainPage(self, page):
-        return requests.get('%s' % page, timeout=7)
+        return requests.get('%s' % page, timeout=21)
 
     # Return soup
     def GetEnclose(self, soup):

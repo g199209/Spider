@@ -21,7 +21,7 @@ class ZJU_GRS(WebsiteBase.WebsiteBase):
 
     # Use requests to get the main page, return response
     def GetMainPage(self, page):
-        return requests.get('http://grs.zju.edu.cn/redir.php?catalog_id=16313', timeout=7)
+        return requests.get('http://grs.zju.edu.cn/redir.php?catalog_id=16313', timeout=21)
 
     # Return soup
     def GetEnclose(self, soup):

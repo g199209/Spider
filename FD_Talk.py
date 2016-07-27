@@ -22,7 +22,7 @@ class FD_Talk(WebsiteBase.WebsiteBase):
     # Use requests to get the main page, return response
     def GetMainPage(self, page):
         payload = {'count': 100}
-        return requests.get('http://www.career.fudan.edu.cn/jsp/career_talk_list.jsp', params=payload, timeout=7)
+        return requests.get('http://www.career.fudan.edu.cn/jsp/career_talk_list.jsp', params=payload, timeout=21)
 
     # Return soup
     def GetEnclose(self, soup):

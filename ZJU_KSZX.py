@@ -21,7 +21,7 @@ class ZJU_KSZX(WebsiteBase.WebsiteBase):
 
     # Use requests to get the main page, return response
     def GetMainPage(self, page):
-        return requests.get('http://kszx.zju.edu.cn/Default.aspx', timeout=7)
+        return requests.get('http://kszx.zju.edu.cn/Default.aspx', timeout=21)
 
     # Return soup
     def GetEnclose(self, soup):

@@ -22,7 +22,7 @@ class YJS(WebsiteBase.WebsiteBase):
         return range(1, 8)
 
     def GetMainPage(self, page):
-        return requests.get('http://www.yingjiesheng.com/commend-fulltime-%s.html'%page, timeout=7)
+        return requests.get('http://www.yingjiesheng.com/commend-fulltime-%s.html'%page, timeout=21)
 
     def GetEnclose(self, soup):
         return soup.find('table')

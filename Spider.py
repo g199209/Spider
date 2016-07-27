@@ -59,21 +59,21 @@ while True:
             logging.error(repr(err))
             # traceback.print_exc()
 
-            if not web.err:
-                web.err = True
+            web.err += 1
+            if 4 == web.err:
                 try:
                     web.ReportErrStatus(repr(err))
                     logging.warning('Send Wchat Error Report.')
                 except:
                     logging.critical('Send Wchat Error Report Error!!!!!')
         else:
-            if web.err:
-                web.err = False
+            if web.err >= 4:
                 try:
                     web.ReportErrStatus('')
                     logging.warning('Send Wchat Recovery Report.')
                 except:
                     logging.critical('Send Wchat Recovery Report Error!!!!!')
+            web.err = 0
 
     logging.warning('************************')
     logging.warning('End of a loop~\n')
