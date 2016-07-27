@@ -32,8 +32,8 @@ EngineerKeywords = [
 WebList = []
 WebList.append(ZJU_GRS(2))
 WebList.append(ZJU_KSZX(5))
-WebList.append(ZJU_Talk('浙大金融宣讲会', 'ZJU_Talk_Finance', 6, FinanceKeywords))
 WebList.append(ZJU_Talk('浙大工程师宣讲会', 'ZJU_Talk_Engineer', 7, EngineerKeywords))
+WebList.append(ZJU_Talk('浙大金融宣讲会', 'ZJU_Talk_Finance', 6, FinanceKeywords))
 WebList.append(SJTU_Talk('交大金融宣讲会', 'SJTU_Talk_Finance', 8, FinanceKeywords))
 WebList.append(SJTU_Talk('交大工程师宣讲会', 'SJTU_Talk_Engineer', 9, EngineerKeywords))
 WebList.append(FD_Talk('复旦金融宣讲会', 'FD_Talk_Finance', 10, FinanceKeywords))
@@ -47,10 +47,7 @@ logging.basicConfig(
 
 logging.critical('Program Start!\n')
 while True:
-    logging.basicConfig(
-        filename='%s.log' % (time.strftime("%Y_%m_%d", time.localtime())), level=logging.WARNING,
-        format='%(asctime)s  :  %(message)s')
-    logging.warning('Start new loop~')
+    logging.warning('Start a new loop~')
 
     for web in WebList:
         try:

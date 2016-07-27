@@ -18,20 +18,28 @@ class ZJU_Talk(WebsiteBase.WebsiteBase):
     # Return number of pages
     def GetPageRange(self):
         # Get Number of Pages
-        Formdata = {'pages.currentPage': 1}
-        r = requests.post('http://www.career.zju.edu.cn/ejob/zczphxxmorelogin.do', data=Formdata)
+        Formdata = {'pages.currentPage': 1,
+                    'zphlx': 0,
+                    'pages.pageSize': 30
+                    }
+        r = requests.post('http://www.career.zju.edu.cn/ejob/zczphxxmorelogin.do', data=Formdata, timeout=10)
         r.encoding = 'gb2312'
         soup = BeautifulSoup(r.text, 'html5lib')
         NofPages = int(soup.find('span', title='总页数').contents[0].string)
         if (NofPages > 7):
             NofPages = 7
+        self.NofPages = 7
         return range(1, NofPages + 1)
 
     # Use requests to get the main page, return response
     def GetMainPage(self, page):
-        Formdata = {'pages.currentPage': page}
+        Formdata = {'pages.currentPage': page,
+                    'pages.maxPage': self.NofPages,
+                    'zphlx': 0,
+                    'pages.pageSize': 30
+                    }
         return requests.post('http://www.career.zju.edu.cn/ejob/zczphxxmorelogin.do',
-                             data=Formdata, timeout=7)
+                             data=Formdata, timeout=10)
 
     # Return soup
     def GetEnclose(self, soup):
