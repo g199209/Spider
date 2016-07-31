@@ -42,7 +42,7 @@ WebList.append(YJS('应届生金融招聘', 'YJS_Finance', 12, FinanceKeywords))
 WebList.append(YJS('应届生工程师招聘', 'YJS_Engineer', 13, EngineerKeywords))
 
 logging.basicConfig(
-    filename='%s.log'%(time.strftime("%Y_%m_%d", time.localtime())), level=logging.DEBUG,
+    filename='%s.log'%(time.strftime("%Y_%m_%d", time.localtime())), level=logging.WARNING,
     format='%(asctime)s  :  %(message)s')
 
 logging.critical('Program Start!\n')
