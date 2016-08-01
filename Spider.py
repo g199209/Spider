@@ -53,7 +53,7 @@ while True:
         try:
             logging.warning('************************')
             web.GET()
-            web.Update()
+
         except Exception as err:
             logging.error('Unexpected ERROR!!!!!!')
             logging.error(repr(err))
@@ -74,6 +74,9 @@ while True:
                 except:
                     logging.critical('Send Wchat Recovery Report Error!!!!!')
             web.err = 0
+
+        finally:
+            web.Update()
 
     logging.warning('************************')
     logging.warning('End of a loop~\n')

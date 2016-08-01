@@ -79,6 +79,7 @@ class WebsiteBase:
                 response.encoding = self.encoding
             except Exception as err:
                 returnErr = err
+                logging.error('    ' + ContentURL)
                 logging.error('    ' + repr(err))
                 continue
 
@@ -133,7 +134,8 @@ class WebsiteBase:
                             response = requests.get(ContentURL, timeout=21)
                             response.encoding = self.encoding
                         except Exception as err:
-                            returnErr = err
+                            # returnErr = err
+                            logging.error('    ' + ContentURL)
                             logging.error('    ' + repr(err))
                             continue
 
@@ -185,7 +187,6 @@ class WebsiteBase:
 
     def Update(self):
         logging.warning('Updating : ' + self.Name + '......')
-        returnErr = None
 
         # Init Wchat
         access_token = self.InitWchat()
@@ -219,7 +220,6 @@ class WebsiteBase:
             except Exception as err:
                 logging.error('    Publish Error!')
                 logging.error('    ' + repr(err))
-                returnErr = err
             else:
                 if 'errcode' in r.json() and r.json()['errcode'] == 0:
                     logging.warning('    Publish Success!')
@@ -234,9 +234,6 @@ class WebsiteBase:
         cursor.close()
         conn.commit()
         conn.close()
-
-        if returnErr:
-            raise returnErr
 
     def ReportErrStatus(self, errstr):
         access_token = self.InitWchat()
