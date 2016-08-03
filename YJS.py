@@ -52,7 +52,12 @@ class YJS(WebsiteBase.WebsiteBase):
     def AdditionCheck(self, tag):
         flagcount = 0
 
-        self.joblocstring = tag.find('span', style='color: #008000;').string
+        loctag = tag.find('span', style='color: #008000;')
+        if not loctag:
+            self.joblocstring = ''
+            return False
+        else:
+            self.joblocstring = loctag.string
         for loc in self.JobLoc:
             flagcount += self.joblocstring.count(loc)
         if flagcount == 0:
