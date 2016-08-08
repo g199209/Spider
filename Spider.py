@@ -62,14 +62,14 @@ while True:
             web.err += 1
             if 4 == web.err:
                 try:
-                    web.ReportErrStatus(repr(err))
+                    web.ReportErrStatus(repr(err), True)
                     logging.warning('Send Wchat Error Report.')
                 except:
                     logging.critical('Send Wchat Error Report Error!!!!!')
         else:
             if web.err >= 4:
                 try:
-                    web.ReportErrStatus('')
+                    web.ReportErrStatus('', False)
                     logging.warning('Send Wchat Recovery Report.')
                 except:
                     logging.critical('Send Wchat Recovery Report Error!!!!!')

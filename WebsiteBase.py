@@ -79,7 +79,7 @@ class WebsiteBase:
                 response.encoding = self.encoding
             except Exception as err:
                 returnErr = err
-                logging.error('    ' + ContentURL)
+                logging.error('    ' + str(p))
                 logging.error('    ' + repr(err))
                 continue
 
@@ -235,12 +235,12 @@ class WebsiteBase:
         conn.commit()
         conn.close()
 
-    def ReportErrStatus(self, errstr):
+    def ReportErrStatus(self, errstr, errstate):
         access_token = self.InitWchat()
         if not access_token:
             return
 
-        if self.err:
+        if errstate:
             newsdata = {'touser': 'g199209',
                         'msgtype': 'news',
                         'agentid': 0,
@@ -254,7 +254,8 @@ class WebsiteBase:
                         'agentid': 0,
                         'news': {'articles': [{
                             'title': '云端程序正常运行',
-                            'description': self.Name + ' :\r\n云端程序已从上次错误中恢复，现已正常运行~',
+                            'description': self.Name + ' :\r\n云端程序已从上次错误中恢复，现已正常运行~\r\n' + \
+                            '错误共发生' + self.err + '次',
                         }]}}
 
         try:
