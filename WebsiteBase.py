@@ -254,8 +254,8 @@ class WebsiteBase:
                         'agentid': 0,
                         'news': {'articles': [{
                             'title': '云端程序正常运行',
-                            'description': self.Name + ' :\r\n云端程序已从上次错误中恢复，现已正常运行~\r\n' + \
-                            '错误共发生' + self.err + '次',
+                            'description': self.Name + ' :\r\n云端程序已从上次错误中恢复，现已正常运行~\r\n' +
+                            '错误共发生' + str(self.err) + '次',
                         }]}}
 
         try:
