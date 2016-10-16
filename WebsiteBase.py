@@ -214,7 +214,7 @@ class WebsiteBase:
                         }]}}
 
             try:
-                time.sleep(1)
+                # time.sleep(1)
                 r = requests.post('https://qyapi.weixin.qq.com/cgi-bin/message/send', params=access_token,
                                   data=json.dumps(newsdata, ensure_ascii=False).encode('utf-8'), timeout=21)
             except Exception as err:
