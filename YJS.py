@@ -19,7 +19,7 @@ class YJS(WebsiteBase.WebsiteBase):
 
     # Number of Pages
     def GetPageRange(self):
-        return range(1, 8)
+        return range(1, 20)
 
     def GetMainPage(self, page):
         return requests.get('http://www.yingjiesheng.com/commend-fulltime-%s.html'%page, timeout=21)
