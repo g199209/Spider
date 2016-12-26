@@ -54,7 +54,7 @@ return soup.find('table')
 
 6.`GetTags(self, soup)`
 
-返回tag List，其中每一个元素都是一个`tag`，对应一条消息记录。此List一般通过`soup.find_all()`方法获得，不过某些情况下也需要手工生成，可以使用`soup.contends`等方法进行遍历后生成。
+返回tag List，其中每一个元素都是一个`tag`，对应一条消息记录。此List一般通过`soup.find_all()`方法获得，不过某些情况下也需要手工生成，可以使用`soup.contents`等方法进行遍历后生成。
 
 7.`GetTitle(self, tag)`
 

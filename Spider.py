@@ -8,12 +8,11 @@
 
 import time, logging
 
-from ZJU_GRS import *
-from ZJU_KSZX import *
 from ZJU_Talk import *
 from SJTU_Talk import *
 from FD_Talk import *
 from YJS import *
+from RuanKao import *
 
 # Init
 FinanceKeywords = [
@@ -26,20 +25,20 @@ EngineerKeywords = [
     'IT服务', '自动化', 'Python', 'python', 'C++', 'RTOS', '电子信息',
     '硬件', '软件', '智能', '互联网', '电机', '驱动', '新能源', '固件',
     '电路', 'ARM', 'arm', '微控制器', '汇编', 'C语言', 'matlab',
-    'Matlab', '研发', '算法', 'DSP', 'C#', '微电子', '芯片',
+    'Matlab', '研发', '算法', 'DSP', 'C#', '微电子', '芯片', '图像处理',
+	'模式识别', 'NEON', 'OpenGL', '计算机视觉', '图像识别', 'OpenCV'
 ]
 
 WebList = []
-WebList.append(ZJU_GRS(2))
-WebList.append(ZJU_KSZX(5))
-WebList.append(ZJU_Talk('浙大工程师宣讲会', 'ZJU_Talk_Engineer', 7, EngineerKeywords))
-WebList.append(ZJU_Talk('浙大金融宣讲会', 'ZJU_Talk_Finance', 6, FinanceKeywords))
-WebList.append(SJTU_Talk('交大金融宣讲会', 'SJTU_Talk_Finance', 8, FinanceKeywords))
-WebList.append(SJTU_Talk('交大工程师宣讲会', 'SJTU_Talk_Engineer', 9, EngineerKeywords))
-WebList.append(FD_Talk('复旦金融宣讲会', 'FD_Talk_Finance', 10, FinanceKeywords))
-WebList.append(FD_Talk('复旦工程师宣讲会', 'FD_Talk_Engineer', 11, EngineerKeywords))
-WebList.append(YJS('应届生金融招聘', 'YJS_Finance', 12, FinanceKeywords))
+WebList.append(ZJU_Talk('浙大招聘宣讲会', 'ZJU_Talk_Engineer', 7, EngineerKeywords))
+#WebList.append(ZJU_Talk('浙大金融宣讲会', 'ZJU_Talk_Finance', 6, FinanceKeywords))
+#WebList.append(SJTU_Talk('交大金融宣讲会', 'SJTU_Talk_Finance', 8, FinanceKeywords))
+WebList.append(SJTU_Talk('交大招聘宣讲会', 'SJTU_Talk_Engineer', 9, EngineerKeywords))
+#WebList.append(FD_Talk('复旦金融宣讲会', 'FD_Talk_Finance', 10, FinanceKeywords))
+WebList.append(FD_Talk('复旦招聘宣讲会', 'FD_Talk_Engineer', 11, EngineerKeywords))
+#WebList.append(YJS('应届生金融招聘', 'YJS_Finance', 12, FinanceKeywords))
 WebList.append(YJS('应届生工程师招聘', 'YJS_Engineer', 13, EngineerKeywords))
+WebList.append(RuanKao(5))
 
 logging.basicConfig(
     filename='%s.log'%(time.strftime("%Y_%m_%d", time.localtime())), level=logging.WARNING,
