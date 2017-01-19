@@ -22,8 +22,8 @@ FinanceKeywords = [
 
 EngineerKeywords = [
     '编程', 'Linux', 'linux', '嵌入式', '单片机', 'MCU', 'STM32',
-    'IT服务', '自动化', 'Python', 'python', 'C++', 'RTOS', '电子信息',
-    '硬件', '软件', '智能', '互联网', '电机', '驱动', '新能源', '固件',
+    'IT服务', 'Python', 'python', 'C++', 'RTOS', 'firmware', 'Firmware',
+    '硬件', '软件', '智能', '驱动', '新能源', '固件',
     '电路', 'ARM', 'arm', '微控制器', '汇编', 'C语言', 'matlab',
     'Matlab', '研发', '算法', 'DSP', 'C#', '微电子', '芯片', '图像处理',
 	'模式识别', 'NEON', 'OpenGL', '计算机视觉', '图像识别', 'OpenCV'
