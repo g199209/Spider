@@ -90,16 +90,22 @@ class WebsiteBase:
             logging.warning('    Number of Pages : ' + str(len(tags)))
 
             for tag in tags:
-                # Get Title
-                Title = self.GetTitle(tag)
-                if not Title:
+                try:
+                    # Get Title
+                    Title = self.GetTitle(tag)
+                    if not Title:
+                        continue
+                    logging.warning('      Checking : ' + Title)
+
+                    # Get URL
+                    ContentURL = self.GetURL(tag)
+
+                    # Get time
+                    PublishTime = self.GetPublishTime(tag)
+                except Exception as err:
+                    logging.error('      Format Error!')
+                    logging.error('    ' + repr(err))
                     continue
-
-                # Get URL
-                ContentURL = self.GetURL(tag)
-
-                # Get time
-                PublishTime = self.GetPublishTime(tag)
 
                 # Check DB
                 cursor2.execute(
