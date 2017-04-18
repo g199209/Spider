@@ -7,6 +7,7 @@
 ######################
 
 import time, logging
+import logging.handlers
 
 from ZJU_Talk import *
 from SJTU_Talk import *
@@ -29,20 +30,33 @@ EngineerKeywords = [
 	'模式识别', 'NEON', 'OpenGL', '计算机视觉', '图像识别', 'OpenCV'
 ]
 
+HardwareKeywords = [
+    '硬件', '电路', 'Altium', '单片机', '信号完整性', '电子设计', '系统设计',
+    'PCB', '原理图', 'EMC', 'EMI', '电磁兼容', '数字电路', '模拟电路', 
+    '数电', '模电', '电子工程师'
+]
+
 WebList = []
-WebList.append(ZJU_Talk('浙大招聘宣讲会', 'ZJU_Talk_Engineer', 7, EngineerKeywords))
+WebList.append(ZJU_Talk('浙大招聘宣讲会', 'ZJU_Talk_Engineer', 7, HardwareKeywords))
 #    WebList.append(ZJU_Talk('浙大金融宣讲会', 'ZJU_Talk_Finance', 6, FinanceKeywords))
 #    WebList.append(SJTU_Talk('交大金融宣讲会', 'SJTU_Talk_Finance', 8, FinanceKeywords))
-WebList.append(SJTU_Talk('交大招聘宣讲会', 'SJTU_Talk_Engineer', 9, EngineerKeywords))
+WebList.append(SJTU_Talk('交大招聘宣讲会', 'SJTU_Talk_Engineer', 9, HardwareKeywords))
 #    WebList.append(FD_Talk('复旦金融宣讲会', 'FD_Talk_Finance', 10, FinanceKeywords))
-WebList.append(FD_Talk('复旦招聘宣讲会', 'FD_Talk_Engineer', 11, EngineerKeywords))
+WebList.append(FD_Talk('复旦招聘宣讲会', 'FD_Talk_Engineer', 11, HardwareKeywords))
 #    WebList.append(YJS('应届生金融招聘', 'YJS_Finance', 12, FinanceKeywords))
-WebList.append(YJS('应届生工程师招聘', 'YJS_Engineer', 13, EngineerKeywords))
-#WebList.append(RuanKao(5))
+WebList.append(YJS('应届生工程师招聘', 'YJS_Engineer', 13, HardwareKeywords))
+WebList.append(RuanKao(5))
 
-logging.basicConfig(
-    filename='%s.log'%(time.strftime("%Y_%m_%d", time.localtime())), level=logging.WARNING,
-    format='%(asctime)s  :  %(message)s')
+LOG_FILE = "Debug.log"
+#  logging.basicConfig(
+#      filename='%s.log'%(time.strftime("%Y_%m_%d", time.localtime())), level=logging.WARNING,
+#      format='%(asctime)s  :  %(message)s')
+
+logger = logging.getLogger()
+fh = logging.handlers.TimedRotatingFileHandler(LOG_FILE, when='D', interval=1, backupCount=7)
+formatter = logging.Formatter('%(asctime)s  :  %(message)s')
+fh.setFormatter(formatter)
+logger.addHandler(fh)
 
 logging.critical('Program Start!\n')
 while True:

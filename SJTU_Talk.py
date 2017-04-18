@@ -13,7 +13,7 @@ from bs4 import BeautifulSoup
 
 class SJTU_Talk(WebsiteBase.WebsiteBase):
     def __init__(self, Name, DBName, AgentID, KeyWords):
-        super().__init__(Name, DBName, AgentID, True, KeyWords, 7)
+        super().__init__(Name, DBName, AgentID, True, KeyWords, 3)
 
     # Return number of pages
     def GetPageRange(self):
