@@ -126,7 +126,7 @@ class WebsiteBase:
                     # Check Title
                     # 标题仅检查特殊关键词，以此减少各种误报情况
                     specialflagcount = 0
-                    keywordstring = ' 特殊关键词：'
+                    keywordstring = ' 关键词：'
                     for keyword in self.SpecialKeyWords:
                         if (Title.count(keyword) > 0):
                             specialflagcount += Title.count(keyword)
