@@ -17,7 +17,7 @@ class WebsiteBase:
     # CheckContent ： 是否需要打开URL检查内容，True or False
     # KeyWords : 过滤用关键词List，如果不需要设置为[]
     # KeyWordsThreshold : 关键词阈值，内容页包含的关键词个数超过这个值才认为符合要求
-	# SpecialKeyWords : 特殊关键词，不受阈值的影响，只要包含一个即符合要求
+    # SpecialKeyWords : 特殊关键词，不受阈值的影响，只要包含一个即符合要求
     # encoding ： 网站的编码格式，不设置的话默认为utf-8
     def __init__(self, Name, DBName, AgentID, CheckContent, KeyWords, KeyWordsThreshold, SpecialKeyWords = [], encoding = 'utf-8'):
         self.Name = Name
@@ -28,7 +28,7 @@ class WebsiteBase:
         self.KeyWords = KeyWords
         self.encoding = encoding
         self.KeyWordsThreshold = KeyWordsThreshold
-		self.SpecialKeyWords = SpecialKeyWords
+        self.SpecialKeyWords = SpecialKeyWords
         # Error Status
         self.err = 0
 
@@ -124,7 +124,7 @@ class WebsiteBase:
 
                 if self.KeyWords:
                     # Check Title
-					# 标题仅检查特殊关键词，以此减少各种误报情况
+                    # 标题仅检查特殊关键词，以此减少各种误报情况
                     specialflagcount = 0
                     keywordstring = ' 特殊关键词：'
                     for keyword in self.SpecialKeyWords:
@@ -137,7 +137,7 @@ class WebsiteBase:
                         continue
 
                     # Check Content
-					flagcount = 0
+                    flagcount = 0
                     if self.CheckContent and ContentURL != '':
                         try:
                             time.sleep(3)
@@ -153,8 +153,8 @@ class WebsiteBase:
                             if (response.text.count(keyword)) > 0:
                                 flagcount += response.text.count(keyword)
                                 keywordstring = keywordstring + keyword + '；'
-								
-						for keyword in self.SpecialKeyWords:
+                                
+                        for keyword in self.SpecialKeyWords:
                             if (response.text.count(keyword)) > 0:
                                 specialflagcount += response.text.count(keyword)
                                 keywordstring = keywordstring + keyword + '；'
