@@ -13,7 +13,7 @@ from bs4 import BeautifulSoup
 
 class RuanKao(WebsiteBase.WebsiteBase):
     def __init__(self, AgentID):
-        super().__init__('浙江软考', 'Ruankao', AgentID, False, ['2016年下半年'], 1)
+        super().__init__('浙江软考', 'Ruankao', AgentID, False, ['2016年下半年'], 1, ['2016年下半年'])
 
     # Return number of pages
     def GetPageRange(self):

@@ -12,8 +12,8 @@ from bs4 import BeautifulSoup
 
 
 class FD_Talk(WebsiteBase.WebsiteBase):
-    def __init__(self, Name, DBName, AgentID, KeyWords):
-        super().__init__(Name, DBName, AgentID, True, KeyWords, 3)
+    def __init__(self, Name, DBName, AgentID, KeyWords, SpecialKeyWords = []):
+        super().__init__(Name, DBName, AgentID, True, KeyWords, 3, SpecialKeyWords)
 
     # Return number of pages
     def GetPageRange(self):

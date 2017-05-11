@@ -12,10 +12,10 @@ from bs4 import BeautifulSoup
 
 
 class YJS(WebsiteBase.WebsiteBase):
-    def __init__(self, Name, DBName, AgentID, KeyWords):
+    def __init__(self, Name, DBName, AgentID, KeyWords, SpecialKeyWords = []):
         self.joblocstring = ''
         self.JobLoc = ['全国', '上海', '杭州', '浙江', '深圳', '广州', '南京', '苏州']
-        super().__init__(Name, DBName, AgentID, True, KeyWords, 7, 'gb2312')
+        super().__init__(Name, DBName, AgentID, True, KeyWords, 7, SpecialKeyWords, 'gb2312')
 
     # Number of Pages
     def GetPageRange(self):

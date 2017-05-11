@@ -12,8 +12,8 @@ from bs4 import BeautifulSoup
 
 
 class ZJU_Talk(WebsiteBase.WebsiteBase):
-    def __init__(self, Name, DBName, AgentID, KeyWords):
-        super().__init__(Name, DBName, AgentID, True, KeyWords, 3, 'gb2312')
+    def __init__(self, Name, DBName, AgentID, KeyWords, SpecialKeyWords = []):
+        super().__init__(Name, DBName, AgentID, True, KeyWords, 3, SpecialKeyWords, 'gb2312')
 
     # Return number of pages
     def GetPageRange(self):
