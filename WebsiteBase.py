@@ -141,7 +141,9 @@ class WebsiteBase:
                     if self.CheckContent and ContentURL != '':
                         try:
                             time.sleep(3)
-                            response = requests.get(ContentURL, timeout=21)
+                            header = {
+                                'User-Agent': 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36'}
+                            response = requests.get(ContentURL, timeout=21, headers = header)
                             response.encoding = self.encoding
                         except Exception as err:
                             # returnErr = err
