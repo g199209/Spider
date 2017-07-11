@@ -22,12 +22,10 @@ FinanceKeywords = [
 ]
 
 EngineerKeywords = [
-    '编程', 'Linux', 'linux', '嵌入式', '单片机', 'MCU', 'STM32',
-    'IT服务', 'Python', 'python', 'C++', 'RTOS', 'firmware', 'Firmware',
-    '硬件', '软件', '智能', '驱动', '新能源', '固件',
-    '电路', 'ARM', 'arm', '微控制器', '汇编', 'C语言', 'matlab',
-    'Matlab', '研发', '算法', 'DSP', 'C#', '微电子', '芯片', '图像处理',
-	'模式识别', 'NEON', 'OpenGL', '计算机视觉', '图像识别', 'OpenCV'
+    'Linux', 'linux', '嵌入式', 'C++', 'RTOS', 'firmware', 'Firmware',
+    '固件', 'ARM', 'arm', 'C语言', '操作系统', '虚拟化', '中间件',
+    'Hadoop', '虚拟机', 'MapReduce', '分布式', '大数据开发', '并行计算',
+    '云计算', 'Spark', 'Storm', '流式计算'
 ]
 
 HardwareKeywords = [
@@ -40,15 +38,19 @@ HardwareSpecialKeywords = [
     '硬件工程师', '电子工程师', '射频工程师', '硬件应用工程师', '硬件开发工程师', '硬件设计工程师', '硬件技术工程师'
 ]
 
+EngineerSpecialKeywords = [
+    '嵌入式工程师', '嵌入式开发工程师', '固件工程师', '驱动工程师', '驱动开发工程师', '操作系统工程师'
+]
+
 WebList = []
-WebList.append(ZJU_Talk('浙大招聘宣讲会', 'ZJU_Talk_Engineer', 7, HardwareKeywords, HardwareSpecialKeywords))
+WebList.append(ZJU_Talk('浙大招聘宣讲会', 'ZJU_Talk_Engineer', 7, EngineerKeywords, EngineerSpecialKeywords))
 #    WebList.append(ZJU_Talk('浙大金融宣讲会', 'ZJU_Talk_Finance', 6, FinanceKeywords))
 #    WebList.append(SJTU_Talk('交大金融宣讲会', 'SJTU_Talk_Finance', 8, FinanceKeywords))
-WebList.append(SJTU_Talk('交大招聘宣讲会', 'SJTU_Talk_Engineer', 9, HardwareKeywords, HardwareSpecialKeywords))
+WebList.append(SJTU_Talk('交大招聘宣讲会', 'SJTU_Talk_Engineer', 9, EngineerKeywords, EngineerSpecialKeywords))
 #    WebList.append(FD_Talk('复旦金融宣讲会', 'FD_Talk_Finance', 10, FinanceKeywords))
-WebList.append(FD_Talk('复旦招聘宣讲会', 'FD_Talk_Engineer', 11, HardwareKeywords, HardwareSpecialKeywords))
+WebList.append(FD_Talk('复旦招聘宣讲会', 'FD_Talk_Engineer', 11, EngineerKeywords, EngineerSpecialKeywords))
 #    WebList.append(YJS('应届生金融招聘', 'YJS_Finance', 12, FinanceKeywords))
-WebList.append(YJS('应届生工程师招聘', 'YJS_Engineer', 13, HardwareKeywords, HardwareSpecialKeywords))
+WebList.append(YJS('应届生工程师招聘', 'YJS_Engineer', 13, EngineerKeywords, EngineerSpecialKeywords))
 WebList.append(RuanKao(5))
 
 LOG_FILE = "Debug.log"
